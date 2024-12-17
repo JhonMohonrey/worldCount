@@ -12,40 +12,28 @@ function Container(props) {
     let chinaX = Math.floor(Math.random() * 5000)
 
     React.useEffect(() => {
-        let ch = Math.floor(Math.random() * 15); // Random increment
-        let intervalSpeed = Math.floor(Math.random() * (3000 - 500) + 500); // Random speed between 500ms and 3000ms
-    
-        const updateChinaCount = () => {
-            setCount(prev => prev + ch);
-            intervalSpeed = Math.floor(Math.random() * (3000 - 500) + 500); // Update speed unpredictably
-            clearInterval(interval);
-            interval = setInterval(updateChinaCount, intervalSpeed); // Restart with new speed
-        };
-    
-        let interval = setInterval(updateChinaCount, intervalSpeed);
+        
+        const count = setInterval(() => {
+            let ph = Math.floor(Math.random() * 15)
+            setCount(prev => prev += Number(ph))
+        }, Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000);
     
         return () => {
-            clearInterval(interval);
-        };
-    }, []);
+            clearInterval(count)
+        }
+    }, [])
 
     React.useEffect(() => {
-        let ch = Math.floor(Math.random() * 15); // Random increment
-        let intervalSpeed = Math.floor(Math.random() * (3000 - 500) + 500); // Random speed between 500ms and 3000ms
-    
-        const updateChinaCount = () => {
-            setChina(prev => prev + ch);
-            intervalSpeed = Math.floor(Math.random() * (3000 - 500) + 500); // Update speed unpredictably
-            clearInterval(interval);
-            interval = setInterval(updateChinaCount, intervalSpeed); // Restart with new speed
-        };
-    
-        let interval = setInterval(updateChinaCount, intervalSpeed);
+        
+        const count = setInterval(() => {
+            let ch = Math.floor(Math.random() * 15)
+            setChina(prev => prev += Number(ch))
+        }, Math.floor(Math.random() * (5000 - 1000 + 1)) + 1000) //Can you make the speed
     
         return () => {
-            clearInterval(interval);
-        };
-    }, []);
+            clearInterval(count)
+        }
+    }, [])
 
     const render = (img, name, count) => {
         return (
